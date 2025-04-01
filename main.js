@@ -1,34 +1,10 @@
 /// script.js
-window.fetch = async () => {
-    console.warn("Blocked: fetch request");
-    return new Promise(() => {}); // Prevent execution
-};
-
-// Block XMLHttpRequest
-window.XMLHttpRequest = class extends XMLHttpRequest {
-    constructor() {
-        super();
-        console.warn("Blocked: XMLHttpRequest");
+window.addEventListener("keyup", event => {
+  if (event.ctrlKey && event.which === 192) {
+    let code = prompt("Eval:");
+    if (code.startsWith("javascript:")) {
+      code = code.substring(11);
     }
-    open() {}
-    send() {}
-};
-
-// Block WebSockets
-window.WebSocket = class {
-    constructor() {
-        console.warn("Blocked: WebSocket");
-        throw new Error("WebSocket connections are disabled");
-    }
-};
-
-// Block other methods that may be used for requests
-navigator.sendBeacon = () => {
-    console.warn("Blocked: sendBeacon request");
-    return false;
-};
-
-document.addEventListener("submit", (event) => {
-    event.preventDefault();
-    console.warn("Blocked: form submission");
+    eval(code);
+  }
 });
