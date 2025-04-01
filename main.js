@@ -1,4 +1,5 @@
 /// script.js
+alert("test")
 (function() {
     "use strict";
 
