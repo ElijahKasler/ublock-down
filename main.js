@@ -1,10 +1,22 @@
 /// script.js
-window.addEventListener("keyup", event => {
-  if (event.ctrlKey && event.which === 192) {
-    let code = prompt("Eval:");
-    if (code.startsWith("javascript:")) {
-      code = code.substring(11);
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    if (details.url.includes("securly.com")) {
+      return { cancel: true };
     }
-    eval(code);
-  }
-});
+  },
+  { urls: ["<all_urls>"] },
+  ["blocking"]
+);
+
+// To redirect instead of block, use the following code
+// chrome.webRequest.onBeforeRequest.addListener(
+//   function(details) {
+//     if (details.url.includes("securly.com")) {
+//       return { redirectUrl: "https://example.com" };
+//     }
+//   },
+//   { urls: ["<all_urls>"] },
+//   ["blocking"]
+// );
+
