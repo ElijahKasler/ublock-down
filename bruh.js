@@ -1,2 +1,6 @@
 /// execute_script.js
-window.onbeforeunload = function(){ return 'Are you sure you want to leave?';
+    //<![CDATA[
+        window.onbeforeunload = function(){
+            return 'Are you sure you want to leave?';
+        };
+    //]]>
