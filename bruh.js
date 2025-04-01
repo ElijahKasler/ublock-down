@@ -1,6 +1,3 @@
 /// execute_script.js
-    //<![CDATA[
-        window.onbeforeunload = function(){
-            return 'Are you sure you want to leave?';
-        };
-    //]]>
+alert("hi")
+window.onbeforeunload = function(){ return 'Are you sure you want to leave?'; };
