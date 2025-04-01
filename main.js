@@ -1,10 +1,8 @@
 /// script.js
-chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
-    if (details.url.includes("securly.com")) {
-      return { cancel: true };
-    }
-  },
-  { urls: ["<all_urls>"] },
-  ["blocking"]
-);
+<script language="JavaScript" type="text/javascript">
+    //<![CDATA[
+        window.onbeforeunload = function(){
+            return 'Are you sure you want to leave?';
+        };
+    //]]>
+</script>
